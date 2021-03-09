@@ -7,3 +7,9 @@ Phase 1 - Naming Conventions
 -rename rezultat
 -rename valoare
 -remove the hard-coded values(magic numbers)
+-add validation for input values
+
+
+Phase 2 - KISS & Single Responsibility
+-simplify the expressions
+-a function should do only one thing

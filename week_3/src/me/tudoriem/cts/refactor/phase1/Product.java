@@ -1,12 +1,20 @@
 package me.tudoriem.cts.refactor.phase1;
 
+import me.tudoriem.cts.refactor.exceptions.InvalidAgeException;
+import me.tudoriem.cts.refactor.exceptions.InvalidPriceException;
+
 public class Product {
 
     public  static final int MAX_AGE_ACCOUNT = 10;
     public  static  final float MAX_FIFELITY_DISCOUNT = 0.15f;
 
-    public float computePriceWithDiscount(ProductType productType, float price, int accountAge)
-    {
+    public float computePriceWithDiscount(ProductType productType, float price, int accountAge) throws InvalidPriceException, InvalidAgeException {
+        if(price <=0){
+            throw  new InvalidPriceException();
+        }
+        if(accountAge <0){
+            throw  new InvalidAgeException();
+        }
         float finalPrice = 0;
         float fidelityDiscount = (accountAge > MAX_AGE_ACCOUNT) ? MAX_FIFELITY_DISCOUNT : (float)accountAge/100;
 
