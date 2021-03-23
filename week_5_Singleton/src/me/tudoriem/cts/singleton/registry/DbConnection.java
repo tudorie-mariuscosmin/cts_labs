@@ -1,10 +1,12 @@
-package me.tudoriem.cts.singleton;
+package me.tudoriem.cts.singleton.registry;
+
+import java.util.Hashtable;
 
 public class DbConnection {
     String connString;
     String schema;
 
-    private static DbConnection connection = null;
+    private static Hashtable<String, DbConnection> connections = new Hashtable<>();
 
     private  DbConnection(){
         System.out.println("Creating a connection object");
@@ -17,21 +19,12 @@ public class DbConnection {
         this.connString = connString;
         this.schema = schema;
     }
-    //lazy instantiation of the unique object
-    public  static DbConnection getConnection(){
-        if(connection == null){
-            connection = new DbConnection();
-        }
-        return connection;
-    }
-    // not clean and misleading - makes u think u have multiple connections
-    public  static DbConnection getConnection(String connString, String schema){
+    public static  DbConnection getDbConnections(String connString, String schema){
+        DbConnection connection = connections.get(connString);
         if(connection == null){
             connection = new DbConnection(connString, schema);
+            connections.put(connString, connection);
         }
-        return connection;
+        return  connection;
     }
-
-
-
 }
