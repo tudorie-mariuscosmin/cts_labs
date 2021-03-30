@@ -2,6 +2,7 @@ package me.tudoriem.cts.test;
 
 import me.tudoriem.cts.builder.Pistol;
 import me.tudoriem.cts.builder.SuperHero;
+import me.tudoriem.cts.builder.SuperHeroDirector;
 
 public class TestBuilder {
     public static void main(String[] args) {
@@ -27,5 +28,9 @@ public class TestBuilder {
                 .addLeftWeapon(new Pistol())
                 .addRightWeapon(new Pistol())
                 .build();
+
+
+        SuperHeroDirector catalogue = new SuperHeroDirector(new SuperHero.SuperHeroBuilder("joker", 200));
+        SuperHero cline = catalogue.buildJoker();
     }
 }
