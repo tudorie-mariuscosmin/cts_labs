@@ -1,8 +1,8 @@
 package me.tudoriem.cts.adapter;
 
 public abstract class ACMESuperHero {
-    String name;
-    int lifePoints;
+    public String name;
+    public int lifePoints;
 
 
     public ACMESuperHero(String name, int lifePoints) {

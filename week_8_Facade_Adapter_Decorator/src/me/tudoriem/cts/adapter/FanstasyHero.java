@@ -25,13 +25,13 @@ public class FanstasyHero extends ACMESuperHero{
 
     @Override
     public void takeAHit(int points) {
-        System.out.printf("%s takes a hit of %d points", name, points);
+        System.out.printf("%s takes a hit of %d points \n", name, points);
         this.lifePoints -= points;
     }
 
     @Override
     public void heal(int points) {
-        System.out.printf("%s heales %d points", name, points);
+        System.out.printf("%s heales %d points \n", name, points);
         this.lifePoints +=points;
     }
 }

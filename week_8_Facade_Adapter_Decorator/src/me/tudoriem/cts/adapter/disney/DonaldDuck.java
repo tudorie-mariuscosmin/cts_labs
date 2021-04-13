@@ -24,4 +24,14 @@ public class DonaldDuck implements DisneyActions {
         powerLevel += power;
         System.out.println("Power level increased to " + powerLevel);
     }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getPower() {
+        return this.powerLevel;
+    }
 }
