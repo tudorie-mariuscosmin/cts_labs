@@ -1,6 +1,7 @@
 package me.tudoriem.cts.testing.tests;
 
 import me.tudoriem.cts.testing.exceptions.WrongAgeException;
+import me.tudoriem.cts.testing.exceptions.WrongGradesException;
 import me.tudoriem.cts.testing.exceptions.WrongNameExceptions;
 import me.tudoriem.cts.testing.models.Student;
 import org.junit.AfterClass;
@@ -82,4 +83,41 @@ public class StudentTest {
         student.setAge(newAge);
     }
 
+
+    @Test
+    public  void testGetTestAverageAscendingOrder() throws WrongGradesException {
+        ArrayList<Integer> sortedGrades = new ArrayList<>();
+        sortedGrades.add(7);
+        sortedGrades.add(8);
+        sortedGrades.add(9);
+        sortedGrades.add(10);
+        student.setGrades(sortedGrades);
+
+        float expectedAverage = 8.5f;
+
+
+        float computedAverage = student.getGradesAverage();
+        assertEquals("Testing with ascending sorted set of grades", expectedAverage, computedAverage, 0);
+    }
+
+    @Test
+    public void testGetGradesAverageCardinalityZero() throws WrongGradesException {
+        ArrayList<Integer> grades = new ArrayList<>();
+        student.setGrades(grades);
+
+        float expectedAverage = 0;
+        float computedAverage = student.getGradesAverage();
+        assertEquals("Testing with an empty set of grades", expectedAverage, computedAverage,0);
+    }
+    @Test
+    public void testGetGradesAverageCardinalityOne() throws WrongGradesException {
+        ArrayList<Integer> grades = new ArrayList<>();
+        int theGrade =10;
+        grades.add(theGrade);
+        student.setGrades(grades);
+
+        float expectedAverage = theGrade;
+        float computedAverage = student.getGradesAverage();
+        assertEquals("Testing with an empty set of grades", expectedAverage, computedAverage,0);
+    }
 }
